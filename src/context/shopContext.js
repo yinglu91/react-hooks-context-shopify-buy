@@ -1,7 +1,16 @@
-import { useState, useEffect, createContext } from 'react'
+import React, { useState, useEffect, createContext, useMemo } from 'react'
 import Client from 'shopify-buy'
 
-export const ShopContext = createContext()
+const ShopContext = createContext()
+
+export const useShopContext = () => {
+  const context = React.useContext(ShopContext)
+  if (context === undefined) {
+    throw new Error(`useShopContext must be used within a ShopProvider`)
+  }
+
+  return context
+}
 
 // Initializing a client to return content in the store's primary language
 const client = Client.buildClient({
@@ -112,9 +121,9 @@ const ShopProvider = ({ children }) => {
   const setCount = (count) => {
     setCartCount(count)
   }
-  
-  return (
-    <ShopContext.Provider value={{
+
+  const value = useMemo(
+    () => ({
       product,
       products,
       checkout,
@@ -132,7 +141,18 @@ const ShopProvider = ({ children }) => {
       closeMenu,
       openMenu,
       setCount,
-    }}>
+    }),
+    [ product,
+      products,
+      checkout,
+      isCartOpen,
+      isMenuOpen,
+      cartCount,
+      shop]
+  )
+  
+  return (
+    <ShopContext.Provider value={value}>
       {children}
     </ShopContext.Provider>
   )

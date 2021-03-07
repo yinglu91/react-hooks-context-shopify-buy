@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from "react-router-dom"
-import { ShopContext } from '../context/shopContext'
+import { useShopContext } from '../context/shopContext'
 
 const ProductView = () => {
 	const {
@@ -9,7 +9,7 @@ const ProductView = () => {
 		openCart,
 		checkout,
 		addVariant,
-	} = useContext(ShopContext)
+	} = useShopContext()
 
 	const [size, setSize] = useState("")
 	const [quantity, setQuantity] = useState(1)

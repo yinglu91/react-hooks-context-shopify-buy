@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react'
-import { ShopContext } from '../context/shopContext'
+import React, { useEffect } from 'react'
+import { useShopContext } from '../context/shopContext'
 import { MdShoppingCart, MdRemoveShoppingCart } from "react-icons/md"
 import LineItem from "./LineItem"
 
@@ -10,7 +10,7 @@ const Cart = () => {
 		openCart,
 		checkout,
 		setCount,
-	} = useContext(ShopContext)
+	} = useShopContext()
 
 	function handleOpen(e) {
 		e.preventDefault()

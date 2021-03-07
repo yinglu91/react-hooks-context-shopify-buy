@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import { ShopContext } from '../context/shopContext'
+import React from 'react'
+import { useShopContext } from '../context/shopContext'
 import ProductItem from './ProductItem'
 
 const Products = () => {
-	const { products } = useContext(ShopContext)
+	const { products } = useShopContext()
 
 	return (
 		<div className="Products-wrapper">

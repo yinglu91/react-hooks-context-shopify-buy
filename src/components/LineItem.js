@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { ShopContext } from '../context/shopContext'
+import React from 'react'
+import { useShopContext } from '../context/shopContext'
 
 const LineItem = () => {
-	const { checkout, updateQuantity, removeLineItem } = useContext(ShopContext)
+	const { checkout, updateQuantity, removeLineItem } = useShopContext()
 
 	function decrementQuantity(lineItemId, lineItemQuantity, e) {
 		e.preventDefault()

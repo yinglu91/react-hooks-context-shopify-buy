@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { ShopContext } from '../context/shopContext'
+import React from 'react'
+import { useShopContext } from '../context/shopContext'
 
 const Home = () => {
-	const { shop: shopDetails } = useContext(ShopContext)
+	const { shop: shopDetails } = useShopContext()
 
 	return (
 		<div>
